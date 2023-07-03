@@ -11,10 +11,16 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
     "core-js": "^3.25.3",
+    "normalize": "^0.3.1",
+    "npm-sass": "^3.1.0",
     "nuxt": "^2.15.8",
     "vue": "^2.7.10",
     "vue-server-renderer": "^2.7.10",
     "vue-template-compiler": "^2.7.10"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "sass": "^1.63.6",
+    "sass-loader": "10",
+    "webpack": "^5.88.1"
+  }
 }
