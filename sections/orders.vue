@@ -9,7 +9,7 @@
       </div>
       <ul class="orders-items">
         <li class="orders-item">
-          Для участия в розыгрыше перейдите в подборку «До 500 рублей» и выберите любимые сладости.
+          Для участия в розыгрыше перейдите в подборку «Сезон кинопризов» и выберите любимые сладости.
         </li>
         <li class="orders-item">
           Чтобы открыть новые вкусы, миксуйте драже и мороженое. Например, попробуйте соединить кислые конфеты и карамельное мороженое.
@@ -49,10 +49,12 @@ export default {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 0 34px;
+    padding: 0 25px;
   }
   &-item {
     font-size: 14px;
+    list-style-image: url("/media/bg.svg");
+    padding: 0 15px;
   }
 }
 </style>

@@ -50,6 +50,7 @@ export default {
     line-height: 120%;
     margin: 0 0 16px 0;
     text-align: center;
+    color: #000;
   }
   a {
     color: var(--coral);

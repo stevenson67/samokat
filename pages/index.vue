@@ -31,30 +31,31 @@ export default {
   mounted() {
     document.addEventListener('scroll', function () {
       let offset = window.scrollY - window.innerHeight / 100
+      let offsetPopcorn = window.scrollY - window.innerHeight - 300
 
       document.querySelectorAll('.corn-1').forEach(item => {
+        item.style = `transform: translateY(${offset / 20}px)`
+      })
+      document.querySelectorAll('.corn-2').forEach(item => {
         item.style = `transform: translateY(${offset / 10}px)`
       })
-      document.querySelectorAll('.snikers, .corn-2').forEach(item => {
+      document.querySelectorAll('.corn-3').forEach(item => {
+        item.style = `transform: translateY(${offset / 5}px)`
+      })
+      document.querySelectorAll('.snikers').forEach(item => {
         item.style = `transform: translateY(${offset / 8}px)`
       })
-      document.querySelectorAll('.corn-3').forEach(item => {
-        item.style = `transform: translateY(${offset / 15}px)`
-      })
       document.querySelectorAll('.scroll-1').forEach(item => {
-        item.style = `transform: translateY(${offset / 6}px)`
+        item.style = `transform: translateY(${offsetPopcorn / 20}px)`
       })
       document.querySelectorAll('.scroll-2').forEach(item => {
-        item.style = `transform: translateY(${offset / 3.5}px)`
+        item.style = `transform: translateY(${offsetPopcorn / 10}px)`
       })
       document.querySelectorAll('.scroll-3').forEach(item => {
-        item.style = `transform: translateY(${offset / 2}px)`
+        item.style = `transform: translateY(${offsetPopcorn / 30}px)`
       })
-      document.querySelectorAll('.scroll-4').forEach(item => {
-        item.style = `transform: translateY(${offset / 1.5}px)`
-      })
-      document.querySelectorAll('svg path.scroll-h').forEach(item => {
-        item.style = `transform: rotate(${offset / 20}deg)`
+      document.querySelectorAll('.m_m').forEach(item => {
+        item.style = `transform: rotate(-${offset / 180}deg)`
       })
       document.querySelectorAll('svg path.scroll-hi').forEach(item => {
         item.style = `transform: rotate(-${offset / 20}deg)`

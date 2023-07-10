@@ -1,10 +1,12 @@
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: true,
-
+  server: {
+    host: "0.0.0.0"
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'samokat',
+    title: 'Кино и призы',
     htmlAttrs: {
       lang: 'ru'
     },
@@ -15,7 +17,7 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }
     ]
   },
 

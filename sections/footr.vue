@@ -6,9 +6,9 @@
         <img src="/media/icon.svg" alt=""/>
         <span>Скачать приложение</span>
       </a>
-      <small class="info">ООО «Умный ритейл» ОГРН 1177847261602, 192019, Санкт‑Петербург, улица Седова, дом 11, Литер А, этаж 6, помещение 627.</small>
+      <small class="info">Сроки проведения акции: 06.07.2023 — 19.07.2023. Организатор ООО «Умный ритейл», ОГРН 1177847261602, 192019, Санкт-Петербург, ул.Седова, дом.11, Литер А, Этаж 6, помещение 627.</small>
       <div class="footer__copyright">
-        <logo color="var(--gray-2)"/>
+        <logo color="var(--white)"/>
         <small>2022 © ООО «Умный ритейл»</small>
       </div>
     </div>
@@ -37,7 +37,7 @@ export default {
     span {
       margin-left: 8px;
       font-size: 12px;
-      color: var(--gray-2);
+      color: var(--white);
     }
   }
   &__copyright {
@@ -45,7 +45,6 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     svg {
       height: 12px;
       width: auto;

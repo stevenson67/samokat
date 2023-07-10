@@ -1,44 +1,85 @@
 <template>
   <aside class="result">
     <div class="result__header container">
-      <logo color="var(--gray-4)"/>
+      <logo color="var(--white)"/>
       <div class="result__close" @click="$emit('close')" v-show="result && shakeEnd">
         <close/>
       </div>
     </div>
     <div class="result__wrap result-wait" v-show="!result || !shakeEnd">
 <!--      <mini-elka/>-->
-      <hands-elka/>
-      <h1 class="result-wait__title">Трясём ёлочку…</h1>
+      <mini-popcorn/>
+      <h1 class="result-wait__title">Свет, камера…</h1>
     </div>
-    <div class="result__wrap result-gift" v-show="result===1 && shakeEnd">
-<!--      <gift/>-->
+    <div class="result__wrap result-certificate" v-show="result==='FASTCODE' && shakeEnd">
+      <!--      <gift/>-->
       <gift-success/>
       <div class="container">
-        <h2 class="result-gift__title">Поздравляем, <br/> вы выиграли приз</h2>
-        <p v-html="desc"/>
-        <p v-show="big">Чтобы его получить, напишите в поддержку «Хочу подарок»</p>
-        <a href="https://t.me/SamokatSupportBot" target="_blank" class="button" v-if="big">
-          Написать в поддержку
-        </a>
-        <div class="button" @click="copy" v-else>
+        <h2 class="result-gift__title">Свет, камера, приз!</h2>
+        <p>
+          Поздравляем, вы выиграли сертификат <span>{{ promoCode }}</span> <br/>
+          на покупки в Самокате на 1 000 ₽.
+          Можно заказать сладости и попробовать выиграть что-то ещё — наушники, колонку или кинопроектор.
+        </p>
+        <div class="button" @click="copy">
           {{ isCopied ? 'Скопировано' : 'Скопировать промокод' }}
         </div>
       </div>
     </div>
-    <div class="result__wrap result-sorry" v-show="result===2 && shakeEnd">
-<!--      <gift/>-->
-      <gift-failure/>
+    <div class="result__wrap result-certificate" v-show="result==='10000' && shakeEnd">
+      <!--      <gift/>-->
+      <gift-success/>
       <div class="container">
-        <h2 class="result-sorry__title">В этот раз <br/> удача вильнула хвостом</h2>
+        <h2 class="result-gift__title">Свет, камера, приз!</h2>
         <p>
-          Но это не повод грустить! <br/>
-          Лучше порадуйте себя любимыми продуктами из Самоката.
+          Поздравляем, вы выиграли сертификат <br>на 10 000 ₽ на наушники или колонку. <br>Теперь звук будет объёмным и глубоким, <br>как в кинотеатре.
         </p>
-        <a href="https://vml8.adj.st/promocategory/0ee772cf-ba70-49ce-9f8d-1c1c80f0b0ed?showStories&showcaseType=MINIMARKET&adj_t=347ewp7"
-           target="_blank"
-           class="button">
-          Заказать в приложении
+        <h3 class="result-gift__title">Чтобы получить сертификат, <br>отправьте свои данные на почту <a class="result__wrap-mail">data@gp-g.ru</a></h3>
+        <p>
+          — имя и фамилия;<br>
+          — электронный адрес и номер телефона;<br>
+          — сканы страниц паспорта<br>(разворот и прописка);<br>
+          — скан свидетельства ИНН;<br>
+          — адрес, куда доставить приз.
+        </p>
+        <a href="https://t.me/SamokatSupportBot" target="_blank" class="button">
+          Написать в поддержку
+        </a>
+      </div>
+    </div>
+    <div class="result__wrap result-certificate" v-show="result==='30000' && shakeEnd">
+      <!--      <gift/>-->
+      <gift-success/>
+      <div class="container">
+        <h2 class="result-gift__title">Свет, камера, приз!</h2>
+        <p>
+          Поздравляем, вы выиграли <br>
+          кинопроектор. Теперь смотреть фильмы <br>
+          будет комфортнее и атмосфернее.
+        </p>
+        <h3 class="result-gift__title">Чтобы получить сертификат, <br>отправьте свои данные на почту <a class="result__wrap-mail">data@gp-g.ru</a></h3>
+        <p>
+          — имя и фамилия;<br>
+          — электронный адрес и номер телефона;<br>
+          — сканы страниц паспорта<br>(разворот и прописка);<br>
+          — скан свидетельства ИНН;<br>
+          — адрес, куда доставить приз.
+        </p>
+        <a href="https://t.me/SamokatSupportBot" target="_blank" class="button">
+          Написать в поддержку
+        </a>
+      </div>
+    </div>
+    <div class="result__wrap result-sorry" v-show="result==='nothing' && shakeEnd">
+      <!--      <gift/>-->
+      <gift-success/>
+      <div class="container">
+        <h2 class="result-sorry__title">Свет, камера, приз!</h2>
+        <p>
+          К сожалению, вы ничего не выиграли, но можно попробовать снова. Помните, что некоторые актёры получили «Оскар» с шестой попытки.
+        </p>
+        <a href="https://t.me/SamokatSupportBot" target="_blank" class="button">
+          Написать в поддержку
         </a>
       </div>
     </div>
@@ -48,18 +89,15 @@
 <script>
 import Logo from "@/components/logo";
 import Close from "@/components/close";
-import Gift from "@/components/gift";
 import GiftSuccess from "@/components/gift-success";
-import GiftFailure from "@/components/gift-failure";
 export default {
   name: "result",
-  components: {GiftFailure, GiftSuccess, Gift, Close, Logo},
+  components: {GiftSuccess, Close, Logo},
   props: {
     code: String,
   },
   data: ()=>({
     result: 0,
-    desc: 'Ваш подарок — Промокод <span>XXXX</span> на покупки в самокате на 1000 р.',
     big: false,
     shakeEnd: false,
     promoCode: '',
@@ -67,20 +105,26 @@ export default {
   }),
   methods: {
     sendCode() {
-      this.$axios.$post(window.location.origin + '/query/', { code: this.code })
+      this.$axios.$post( 'https://kinoprizy.samokat.ru' + '/query/', { code: this.code })
         .then(res => {
-          if (res.promo) {
-            if (res.promo.length < 20) {
-              this.promoCode = res.promo
-              this.desc = 'Ваш подарок — ' + res.desc.replace('XXXX', `<span>${res.promo}</span>`)
-            } else {
-              this.big = true
-              this.desc = 'Ваш подарок — ' + res.desc
+          if (res.promo)
+            switch ( res.promo ) {
+              case "":
+                this.result = "nothing"
+                break
+              case "10000":
+                this.result = "10000"
+                break
+              case "30000":
+                this.result = "30000"
+                break
+              default:
+                this.result = "FASTCODE"
+                break
             }
-            this.result = 1
-          } else {
-            this.result = 2
-          }
+          else
+            this.result = "nothing"
+          this.promoCode = res.promo
         })
     },
     copy() {
@@ -135,11 +179,16 @@ export default {
     align-items: center;
     justify-content: center;
     position: relative;
-
+    padding-top: 15%;
+    &-mail {
+      color: var(--coral);
+      text-decoration: underline;
+    }
     span {
       background: var(--coral);
       padding: 2px 8px;
       border-radius: 6px;
+      line-height: 3em;
     }
     .button {
       border-radius: 0;
@@ -161,11 +210,16 @@ export default {
     }
     p { color: var(--gray-4); }
   }
-  &-sorry {
-    //&__title {
-    //  color: var(--green);
-    //}
-    //p { color: var(--gray); }
+}
+@media (max-height: 600px) {
+  .result__wrap .container h2 {
+    margin: 0;
+  }
+  .result__wrap .container p {
+    margin: 5px 0;
+  }
+  .result__wrap .container h3 {
+    margin: 10px 0 5px 0;
   }
 }
 </style>
