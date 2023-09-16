@@ -1,3 +1,5 @@
+<img src="https://github.com/stevenson67/samokat/blob/main/static/favicon.png" white="400" height="400"></img>
+
 # samokat
 
 ## Build Setup
@@ -18,8 +20,6 @@ $ yarn generate
 ```
 
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
-
-<img src="https://github.com/stevenson67/samokat/blob/main/static/favicon.png"></img>
 
 ## Special Directories
 
