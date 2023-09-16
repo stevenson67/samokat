@@ -1,4 +1,4 @@
-<img src="https://github.com/stevenson67/samokat/blob/main/static/favicon.png" white="300" height="300"></img>
+<img src="https://github.com/stevenson67/samokat/blob/main/static/favicon.png" white="200" height="200"></img>
 
 # samokat
 
