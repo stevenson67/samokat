@@ -1,7 +1,6 @@
 <div align="center">
   <img src="https://github.com/stevenson67/samokat/blob/main/static/favicon.png" white="50" height="50" text-align="center"></img>
 </div>
-# samokat
 
 ## Build Setup
 
