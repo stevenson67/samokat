@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://github.com/stevenson67/samokat/blob/main/static/favicon.png" white="100" height="100" text-align="center"></img>
+  <img src="https://github.com/stevenson67/samokat/blob/main/static/favicon.png" white="50" height="50" text-align="center"></img>
 </div>
 # samokat
 
